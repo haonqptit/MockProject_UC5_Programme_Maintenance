@@ -1,15 +1,21 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MockProject.Models;
 
 public class Programme
 {
     public int Id { get; set; }
-    public string Name { get; set; }
-    public bool IsActive { get; set; }
-    
 
-    // Relationship with Contact
+    [Required]
+    public string Name { get; set; }
+
+    public bool IsActive { get; set; }
+
+    [Required]
+    [ForeignKey("Contact")]
     public int ContactId { get; set; }
-    public Contact Contact { get; set; }
+
+    // Không thêm [Required] cho trường Contact
+    public Contact? Contact { get; set; }
 }

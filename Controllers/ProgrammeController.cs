@@ -59,8 +59,6 @@ public class ProgrammesController : ControllerBase
 
         return CreatedAtAction(nameof(GetProgramme), new { id = programme.Id }, programme);
     }
-    
-    
 
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateProgramme(int id, Programme programme)
@@ -68,6 +66,12 @@ public class ProgrammesController : ControllerBase
         if (id != programme.Id)
         {
             return BadRequest();
+        }
+
+        var contact = await _context.Contacts.FindAsync(programme.ContactId);
+        if (contact == null)
+        {
+            return BadRequest("Invalid ContactId.");
         }
 
         _context.Entry(programme).State = EntityState.Modified;
