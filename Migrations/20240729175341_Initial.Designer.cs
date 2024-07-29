@@ -51,6 +51,7 @@ namespace MockProject.Migrations
 
             modelBuilder.Entity("MockProject.Models.Programme", b =>
                 {
+                    
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");

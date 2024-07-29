@@ -25,6 +25,8 @@ public class ContactsController : ControllerBase
         return await _context.Contacts.ToListAsync();
     }
 
+    
+    
     [HttpGet("{id}")]
     public async Task<ActionResult<Contact>> GetContact(int id)
     {
